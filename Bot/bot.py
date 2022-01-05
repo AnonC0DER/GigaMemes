@@ -2,12 +2,12 @@ from pyrogram import Client
 from pyromod import listen
 from config import API_HASH, API_ID , BOT_TOKEN
 
-app = Client(
-    ':memory:',
-    API_ID,
-    API_HASH,
-    bot_token=BOT_TOKEN,
-    plugins = dict(root="handlers"),
+bot = Client(
+    ':memory:', # it won't save any "*.session" file on the directory and will be on memory
+    API_ID, # user api id
+    API_HASH, # user api hash
+    bot_token=BOT_TOKEN, # bot token that user wants to start the bot on it
+    plugins = dict(root="handlers"), # imports plugins from 'handlers' directory 
 )
 
-app.run()
+bot.run() # runs the bot

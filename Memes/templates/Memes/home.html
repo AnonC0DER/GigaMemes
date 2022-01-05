@@ -1,0 +1,19 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+
+{% for meme in memes %}
+
+<div class="avatar">
+    <img src="{{meme.image.url}}">
+  </div>
+  <div class="info">
+    <h2>{{meme.owner.name}}</h2>
+    <h3>{{meme.title}}</h3>
+    <p>{{meme.text}}</p>
+  </div>
+
+{% endfor %}
+
+
+{% endblock content %}

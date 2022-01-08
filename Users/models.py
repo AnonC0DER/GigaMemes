@@ -4,14 +4,14 @@ import uuid
 ###########################################
 
 # Profile model
-class Profile(models.Model):
+class ProfileModel(models.Model):
     '''
     Profile model. \n
     Using Django User model. \n
 
     unique=True, primary_key=True -> Make sure to don't create a meme with an id that already taken.
     '''
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, blank=True)
     name = models.CharField(max_length=200)
     username = models.CharField(max_length=200)
     email = models.EmailField(max_length=200)

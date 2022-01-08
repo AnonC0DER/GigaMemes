@@ -1,6 +1,5 @@
 from django.db import models
-from django.db.models.base import Model
-from Users.models import Profile
+from Users.models import ProfileModel
 import uuid
 ############################
 
@@ -23,7 +22,7 @@ class Meme(models.Model):
     We don't wanna get the objects, we want to get the owner id, so use values_list(), flat=True -> return list of IDs. \n
     If users aren't log in, they can't vote or they can't comment. Users only can vote one time per memes.
     '''
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE, null=True, blank=True)
+    owner = models.ForeignKey(ProfileModel, on_delete=models.CASCADE, null=True, blank=True)
     title = models.CharField(max_length=220)
     text = models.TextField(null=True, blank=True)
     tags = models.ManyToManyField('Tag') 
@@ -53,16 +52,11 @@ class Meme(models.Model):
         return url 
     
 
+    # all users who voted
     @property
     def votes(self):
         ## 
         queryset = self.vote_set.all().values_list('owner__id', flat=True)
-        return queryset
-    
-    
-    @property
-    def comments(self):
-        queryset = self.comment_set.all().values_list('owner__id', flat=True)
         return queryset
 
 
@@ -117,7 +111,7 @@ class Vote(models.Model):
         ('up', 'Up vote'),
         ('down', 'Down vote'),
     )
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    owner = models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
     meme = models.ForeignKey(Meme, on_delete=models.CASCADE)
     vote = models.CharField(max_length=200, choices=VOTE_TYPE)
     created = models.DateTimeField(auto_now_add=True)
@@ -140,14 +134,14 @@ class Comment(models.Model):
 
     unique=True, primary_key=True -> Make sure to don't create a meme with an id that already taken.
     '''
-    owner = models.ForeignKey(Profile, on_delete=models.CASCADE)
+    owner = models.ForeignKey(ProfileModel, on_delete=models.CASCADE)
     meme = models.ForeignKey(Meme, on_delete=models.CASCADE)
     body = models.TextField(max_length=250)
     created = models.DateTimeField(auto_now_add=True)
     id = models.UUIDField(default=uuid.uuid4, unique=True, primary_key=True, editable=False)
     
     def __str__(self):
-        return self.owner__name
+        return str(self.owner)
 
 
 

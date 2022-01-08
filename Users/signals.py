@@ -14,7 +14,7 @@ REF : https://docs.djangoproject.com/en/4.0/topics/signals/
 from django.db.models.signals import post_delete, post_save
 from django.dispatch import receiver
 from django.contrib.auth.models import User
-from .models import Profile
+from .models import ProfileModel
 ################################
 '''
 Instead of @receiver(post_save, sender=User),
@@ -42,7 +42,7 @@ def CreateProfileSignal(sender, instance, created, **kwargs):
     if created:
         user = instance
         # create profile
-        profile = Profile.objects.create(
+        profile = ProfileModel.objects.create(
             user = user,
             username = user.username,
             email = user.email,
@@ -52,7 +52,7 @@ def CreateProfileSignal(sender, instance, created, **kwargs):
 
 
 # Delete User
-@receiver(post_delete, sender=Profile)
+@receiver(post_delete, sender=ProfileModel)
 def ProfileDeletedSignal(sender, instance, **kwargs):
     '''
     What does this function do? If admin delete the profile, this function will delete the user, too.

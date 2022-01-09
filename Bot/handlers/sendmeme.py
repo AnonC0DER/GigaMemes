@@ -10,7 +10,7 @@ This file is just made for getting memes with information from user and send it 
 '''
 
 
-@Client.on_message(filters.command('sendmeme'))
+@Client.on_message(filters.command('create'))
 @sudo_filter # filters sudo users
 async def sendmeme(client, message: Message):
     image = await client.ask(message.chat.id,"Ok, Send Your image") # Asks for image

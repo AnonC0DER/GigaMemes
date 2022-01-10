@@ -1,5 +1,6 @@
 from pyrogram import Client, filters
 from pyrogram.types.messages_and_media.message import Message
+from Bot.driver.functions import Create_meme_from_bot, Get_JWT_for_bot
 from driver.decorators import sudo_filter
 from config import LOG_CHANNEL
 from asyncio import sleep
@@ -13,6 +14,17 @@ This file is just made for getting memes with information from user and send it 
 @Client.on_message(filters.command('sendmeme'))
 @sudo_filter # filters sudo users
 async def sendmeme(client, message: Message):
+    username = await client.ask(message.chat.id , 'Send Your Username') # Asks for Username to get token
+    while not username.text: # if user's message didn't have text, bot will ask for a username again
+        username = await client.ask(message.chat.id,"I said send your **Username**") # Asks for username again
+    passwd = await client.ask(message.chat.id , 'Send Your Password') # Asks for password to get token
+    while not passwd.text: # if user's message didn't have text, bot will ask for a password again
+        passwd = await client.ask(message.chat.id,"I said send your **Password**") # Asks for password again
+    try:
+        token = Get_JWT_for_bot(username, passwd) # this gets access token using username and password that user provided
+    except:
+        await passwd.reply("Invalid info :(")
+        return
     image = await client.ask(message.chat.id,"Ok, Send Your image") # Asks for image
     while not image.photo: # if user's message didn't have image, bot will ask for an image again
         image = await client.ask(message.chat.id,"I said send your **image**") # Asks for image again
@@ -34,7 +46,11 @@ async def sendmeme(client, message: Message):
     await meme.forward(LOG_CHANNEL) # forwards the meme with all information to the log channel
     if confirmation.text.lower() in ['yes' , 'yeah']: # if user say yes, meme will be approved
         await image.download(f'memes/{image.photo.file_id}.jpg') # save the meme image to 'memes' folder using its file_id
-        await confirmation.reply(f"It will be there in a second :)") 
+        try:
+            Create_meme_from_bot(title, text , tags , f'memes/{image.photo.file_id}.jpg', token) #Tries to post the meme on the website
+            await confirmation.reply(f"I just posted your lovely meme :)") 
+        except Exception as e:
+            await confirmation.reply(f'ErroR:\n{e}') # if it get's any error during posting the meme this line will send the error to sender
         await sleep(900)# Sleeps for 15 minutes then deletes the downloaded file
         try:
             remove(f'memes/{image.photo.file_id}.jpg') # remove downloaded image

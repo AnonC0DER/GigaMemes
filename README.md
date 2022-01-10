@@ -30,9 +30,7 @@ They also can do the same things using telegram robot, which is connected to bac
 
 ## Telegram robot
 - create .env file (check config.py)
-- there are two ways to run the robot
-- First one : Simply run -> python manage.py runrobot
-- Second one : Copy Bot folder anywhere you want and simply run -> python bot.py
+- Copy Bot folder wherever you want and simply run -> python bot.py
 
 ---
 

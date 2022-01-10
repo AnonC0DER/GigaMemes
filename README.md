@@ -5,6 +5,8 @@ Vote and comment system work perfectly. <br>
 There are two ways to post a new meme, vote or comment. Users can simply use the website and post their memes. <br>
 They also can do the same things using telegram robot, which is connected to backend by REST APIs. 
 
+[How this system works?](https://github.com/AnonC0DER/GigaMemes/blob/master/ProjectPreview/GigaMemes_preview.pdf)
+
 **Give us a hand with front-end :)**
 ---
 

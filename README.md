@@ -13,6 +13,7 @@ They also can do the same things using telegram robot, which is connected to bac
 
 # Plans 
 - [ ] Automate posts from Reddit
+- [ ] Use a database in telegram robot
 
 ---
 
@@ -33,6 +34,21 @@ They also can do the same things using telegram robot, which is connected to bac
 - Copy Bot folder wherever you want and simply run -> python bot.py
 
 ---
+## Features
+- Memes, Comment, Vote and Profile models 
+- REST APIs :
+1. Register
+2. Authentication with JWT
+3. Get all meme objects
+4. Get single meme object
+5. Create new meme
+6. Create new tag
+7. Vote & comment
+8. Documentation 
+- A telegram robot (using REST APIs)
+
+
+---
 
 # Files
 - [Project preview (how everything works)](https://github.com/AnonC0DER/GigaMemes/tree/master/ProjectPreview)
@@ -42,6 +58,3 @@ They also can do the same things using telegram robot, which is connected to bac
 - [Robot folder](https://github.com/AnonC0DER/GigaMemes/tree/master/Bot)
 - [REST APIs example functions](https://github.com/AnonC0DER/GigaMemes/tree/master/api_examples_python)
 - [Static files](https://github.com/AnonC0DER/GigaMemes/tree/master/static/)
-
-
-

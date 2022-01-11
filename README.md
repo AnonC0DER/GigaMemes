@@ -8,7 +8,7 @@ They also can do the same things using telegram robot, which is connected to bac
 
 [How this system works?](https://github.com/AnonC0DER/GigaMemes/blob/master/ProjectPreview/GigaMemes_preview.pdf)
 
-**Give us a hand with front-end :)**
+**Give me a hand with front-end :)**
 ---
 
 # Plans 

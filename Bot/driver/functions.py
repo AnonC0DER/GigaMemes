@@ -83,6 +83,26 @@ def Get_JWT_for_bot(username, password):
     return TOKEN
 
 
+# Check JWT
+def Check_JWT(token):
+    URL = BASE_URL + 'api/check-jwt/'
+
+    # input headers (authentication token)
+    headers = {
+	    'Authorization' : f'Bearer {token}'
+    }
+
+    # create post request
+    request = post(url=URL, headers=headers).text
+    try:
+        response = json.loads(request)['code']
+    except:
+        response = json.loads(request)['IsAuthenticated']
+    
+    return response
+
+
+
 # Create new tag
 def Create_tag(token, tag):
     URL = BASE_URL + 'api/create-tag/'

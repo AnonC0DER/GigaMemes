@@ -1,6 +1,7 @@
 from pyrogram import Client, filters
 from pyrogram.types.messages_and_media.message import Message
 from driver.functions import *
+from handlers.database import *
 ######################################
 
 
@@ -27,7 +28,6 @@ Do you want me to create this account for you? (yes/no)
     if confirmation.text.lower() == 'yes':
         # create post request
         req = Register(email.text, username.text, password.text, password2.text)
-        print(req)
         # check response
         if 'email' in req:
             await client.send_message(message.chat.id, f'Done !\n\nYour email address : {email.text}\n\nYour username is : {username.text}')
@@ -35,8 +35,7 @@ Do you want me to create this account for you? (yes/no)
         else:
             raise await client.send_message(message.chat.id, req)
 
-
     else:
         raise await client.send_message(message.chat.id,'Okay.\n\nSend /help to get commands list')
 
-    
+# https://docs.elephantsql.com/elephantsql_api.html

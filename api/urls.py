@@ -30,4 +30,6 @@ urlpatterns = [
         description='GigaMemes-schema',
         version='1.0.0'
     ), name='openapi-schema'),
+
+    path('check-jwt/', views.CheckJWT)
 ]

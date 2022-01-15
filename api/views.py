@@ -204,3 +204,10 @@ class CreateTagView(generics.CreateAPIView):
     serializer_class = TagSerializer
     permission_classes = (IsAuthenticated, )
 
+
+@api_view(['POST'])
+@permission_classes([IsAuthenticated])
+def CheckJWT(request):
+    '''Check JSON web token'''
+
+    return Response({'IsAuthenticated' : 'True'})

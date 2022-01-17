@@ -36,6 +36,7 @@ They also can do the same things using telegram robot, which is connected to bac
 ---
 ## Features
 - Memes, Comment, Vote and Profile models 
+- Custom commands (manage ElephantSQL online database using its APIs)
 - REST APIs :
 1. Register
 2. Authentication with JWT

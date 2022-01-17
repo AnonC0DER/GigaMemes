@@ -13,7 +13,7 @@ They also can do the same things using telegram robot, which is connected to bac
 
 # Plans 
 - [ ] Automate posts from Reddit
-- [ ] Use a database in telegram robot
+- [x] Use a database in telegram robot
 
 ---
 

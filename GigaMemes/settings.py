@@ -31,6 +31,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'Memes.apps.MemesConfig',
     'Users.apps.UsersConfig',
+    'custom_commands',
     'rest_framework',
 ]
 

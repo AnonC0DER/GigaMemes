@@ -1,5 +1,5 @@
 # GigaMemes
-## A meme website using Djagno and Django rest framework. <br>
+## A meme website using Django and Django rest framework. <br>
 Users can register and login. They can upload their memes to the website. <br>
 Vote and comment system work perfectly. <br>
 There are two ways to post a new meme, vote or comment. Users can simply use the website and post their memes. <br>
